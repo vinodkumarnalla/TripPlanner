@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TripPlanner</string>
+    <string name="add_a_trip">Add a new trip</string>
+    <string name="view_trips">View all trips</string>
+    <string name="plan_name">Plan Name</string>
+    <string name="add_trip">Add</string>
+    <string name="name">Member Name</string>
+    <string name="number">Number</string>
+    <string name="contribution">Contribution.</string>
+    <string name="expense">Expense</string>
+    <string name="all_fields_required">All fields required</string>
+    <string name="no_trips">No trips found</string>
+    <string name="member_added">Member added</string>
+    <string name="error_try_again">Error! try again</string>
+    <string name="add_member">Add member</string>
+    <string name="no_members">No Members found</string>
+    <string name="members">Members</string>
+    <string name="trips">Trips</string>
+</resources>
