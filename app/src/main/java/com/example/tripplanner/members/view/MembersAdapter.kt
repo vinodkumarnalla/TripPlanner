@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Member
 import com.example.domain.models.Trip
 import com.example.tripplanner.R
+import kotlinx.android.synthetic.main.member_item.view.*
 import kotlinx.android.synthetic.main.trip_item.view.*
 
 class MembersAdapter(val data: List<Member>) : RecyclerView.Adapter<MembersAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.trip_item, null)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.member_item, null)
         return ViewHolder(view)
     }
 
@@ -27,7 +28,12 @@ class MembersAdapter(val data: List<Member>) : RecyclerView.Adapter<MembersAdapt
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun onBind(position: Int) {
-            itemView.txtTripName.text = data[position].name
+            itemView.txtMemberName.text = data[position].name
+            itemView.txtContribution.text =
+                itemView.context.getString(R.string.contribution) + " : " + data[position].contribution
+            itemView.txtExpanse.text =
+                itemView.context.getString(R.string.expense) + " : " + data[position].expanse
+
         }
     }
 

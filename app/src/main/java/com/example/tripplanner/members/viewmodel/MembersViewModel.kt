@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.domain.common.Result
 import com.example.domain.models.Member
 import com.example.domain.models.Trip
+import com.example.domain.models.TripDataModel
 import com.example.domain.usecases.AddMemberUseCase
 import com.example.domain.usecases.GetMembersUseCase
 import javax.inject.Inject
@@ -17,7 +18,7 @@ class MembersViewModel @Inject constructor(
 
     val memberMutableLiveData = MutableLiveData<Member>()
     val errorLiveData = MutableLiveData<Boolean>()
-    val membersLiveData = MutableLiveData<List<Member>>()
+    val membersLiveData = MutableLiveData<TripDataModel>()
 
     fun addMember(name: String, number: Long, contribution: Long, expense: Long, tripId: Long) {
 
@@ -59,7 +60,7 @@ class MembersViewModel @Inject constructor(
         return errorLiveData
     }
 
-    fun getAllMembersLiveData(): LiveData<List<Member>> {
+    fun getAllMembersLiveData(): LiveData<TripDataModel> {
         return membersLiveData
     }
 

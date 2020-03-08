@@ -2,6 +2,7 @@ package com.example.tripplanner.members.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -36,6 +37,7 @@ class AddMembersActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_members)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         initDagger()
         initObserver()
         rxBus.register(this)
@@ -103,5 +105,14 @@ class AddMembersActivity : AppCompatActivity(), View.OnClickListener {
 
     fun getText(et: EditText): String {
         return et.text.trim().toString()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+        return true
     }
 }

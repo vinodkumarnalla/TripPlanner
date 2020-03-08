@@ -11,6 +11,7 @@ import com.example.data.mappers.TripsDbToModelMapper
 import com.example.domain.common.Result
 import com.example.domain.models.Member
 import com.example.domain.models.Trip
+import com.example.domain.models.TripDataModel
 import com.example.domain.repository.TripRepository
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -51,12 +52,12 @@ class TripRepoImplementation @Inject constructor(
             }
     }
 
-    override fun getAllMembers(tripId: Long): Observable<Result<List<Member>>> {
+    override fun getAllMembers(tripId: Long): Observable<Result<TripDataModel>> {
         val members = membersDao.getMembers(tripId)
         return Observable.just(members).map {
-            Result.Success(membersEntityToModelMapper.transform(it)) as Result<List<Member>>
+            Result.Success(membersEntityToModelMapper.transform(it)) as Result<TripDataModel>
         }.onErrorReturn {
-            Result.Failure(emptyList())
+            Result.Failure(TripDataModel(emptyList(),0,0))
         }
     }
 }

@@ -5,14 +5,19 @@ import com.example.data.entities.MemberEntity
 import com.example.data.entities.TripEntity
 import com.example.domain.models.Member
 import com.example.domain.models.Trip
+import com.example.domain.models.TripDataModel
 import javax.inject.Inject
 
 class MembersEntityToModelMapper @Inject constructor() :
-    DataMapper<List<MemberEntity>, List<Member>> {
-    override fun transform(data: List<MemberEntity>): List<Member> {
+    DataMapper<List<MemberEntity>, TripDataModel> {
+    override fun transform(data: List<MemberEntity>): TripDataModel {
         val result = ArrayList<Member>()
+        var totalExp = 0L
+        var totalContribution = 0L
         data?.let {
             for (item in data) {
+                totalExp += item.expense
+                totalContribution += item.contribution
                 result.add(
                     Member(
                         item.id ?: 1,
@@ -25,7 +30,8 @@ class MembersEntityToModelMapper @Inject constructor() :
                 )
             }
         }
-        return result
+
+        return TripDataModel(result, totalExp, totalContribution)
     }
 
 }

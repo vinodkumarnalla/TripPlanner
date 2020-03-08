@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/padding"
     tools:context=".mainscreen.view.MainActivity">
 
     <Button
         android:id="@+id/btnAddTrip"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/padding"
         android:paddingRight="@dimen/padding"
@@ -21,7 +22,7 @@
 
     <Button
         android:id="@+id/btnViewTrip"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding"
         android:paddingLeft="@dimen/padding"

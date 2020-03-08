@@ -3,6 +3,7 @@ package com.example.tripplanner.trip.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -27,6 +28,7 @@ class AddTripActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_trip)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         initDagger()
         btnAddTrip.setOnClickListener(this)
         initObservers()
@@ -63,5 +65,14 @@ class AddTripActivity : AppCompatActivity(), View.OnClickListener {
         if (etTripName.text.trim().isNotEmpty()) {
             tripViewModel.addTrip(etTripName.text.trim().toString())
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+        return true
     }
 }

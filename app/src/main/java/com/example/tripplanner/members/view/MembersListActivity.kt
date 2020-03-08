@@ -3,11 +3,13 @@ package com.example.tripplanner.members.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.models.Member
 import com.example.domain.models.MembersListChangeEvent
@@ -36,6 +38,7 @@ class MembersListActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_members_list)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         initDagger()
         initObserver()
         rxBus.register(this)
@@ -57,11 +60,26 @@ class MembersListActivity : AppCompatActivity(), View.OnClickListener {
     private fun initObserver() {
         membersViewModel.getAllMembersLiveData().observe(this, Observer {
             it?.let {
-                if (it.isNotEmpty()) {
-                    setupAdapter(it)
+                if (it.members.isNotEmpty()) {
+                    setupAdapter(it.members)
                 } else {
                     rvMembers.visibility = View.GONE
                     txtNoMembers.visibility = View.VISIBLE
+                }
+
+                if (it.totalContribution > 0) {
+                    txtTotalContribution.visibility = View.VISIBLE
+                    txtTotalContribution.text =
+                        getString(R.string.total_contribution) + " : " + it.totalContribution
+                } else {
+                    txtTotalContribution.visibility = View.INVISIBLE
+                }
+                if (it.totalExpense > 0) {
+                    txtTotalExpanse.visibility = View.VISIBLE
+                    txtTotalExpanse.text =
+                        getString(R.string.total_expanse) + " : " + it.totalExpense
+                } else {
+                    txtTotalExpanse.visibility = View.INVISIBLE
                 }
             }
         })
@@ -77,6 +95,11 @@ class MembersListActivity : AppCompatActivity(), View.OnClickListener {
         val adapter = MembersAdapter(it)
         rvMembers.layoutManager = LinearLayoutManager(this)
         rvMembers.adapter = adapter
+        val dividerItemDecoration = DividerItemDecoration(
+            this,
+            LinearLayoutManager.VERTICAL
+        )
+        rvMembers.addItemDecoration(dividerItemDecoration)
     }
 
     private fun initDagger() {
@@ -92,4 +115,12 @@ class MembersListActivity : AppCompatActivity(), View.OnClickListener {
         startActivity(intent)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+        return true
+    }
 }

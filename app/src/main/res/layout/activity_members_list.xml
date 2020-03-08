@@ -11,7 +11,7 @@
         android:id="@+id/rvMembers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnAddMember"
+        android:layout_above="@+id/rlBottom"
         android:layout_alignParentTop="true" />
 
     <TextView
@@ -22,11 +22,32 @@
         android:text="@string/no_members"
         android:visibility="gone" />
 
-    <Button
-        android:id="@+id/btnAddMember"
+    <RelativeLayout
+        android:id="@+id/rlBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/add_member" />
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/txtTotalContribution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contribution" />
+
+        <TextView
+            android:id="@+id/txtTotalExpanse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/expense" />
+
+        <Button
+            android:id="@+id/btnAddMember"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtTotalContribution"
+            android:layout_marginTop="@dimen/padding"
+            android:text="@string/add_member" />
+    </RelativeLayout>
 
 </RelativeLayout>

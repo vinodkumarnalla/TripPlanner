@@ -16,4 +16,6 @@
     <string name="no_members">No Members found</string>
     <string name="members">Members</string>
     <string name="trips">Trips</string>
+    <string name="total_expanse">Total Expense</string>
+    <string name="total_contribution">Total contribution</string>
 </resources>
