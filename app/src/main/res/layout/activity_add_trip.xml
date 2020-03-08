@@ -11,7 +11,7 @@
         android:id="@+id/etTripName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/plan_name"
+        android:hint="@string/trip_name"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

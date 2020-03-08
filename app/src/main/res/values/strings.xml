@@ -18,4 +18,5 @@
     <string name="trips">Trips</string>
     <string name="total_expanse">Total Expense</string>
     <string name="total_contribution">Total contribution</string>
+    <string name="trip_name">Trip Name</string>
 </resources>
